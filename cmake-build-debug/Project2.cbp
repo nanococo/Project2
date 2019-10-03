@@ -83,6 +83,12 @@
 		<Unit filename="C:/GitHub_Projects/Project2/main.cpp">
 			<Option target="Project2"/>
 		</Unit>
+		<Unit filename="C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h">
+			<Option target="Project2"/>
+		</Unit>
+		<Unit filename="C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h">
+			<Option target="Project2"/>
+		</Unit>
 		<Unit filename="C:/GitHub_Projects/Project2/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

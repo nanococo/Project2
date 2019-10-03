@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/GitHub_Projects/Project2/main.cpp
+iostream
+-
+src/TreesHandlers/BinarySearchTree.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
+
+C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
+../nodeTypes/BaseBinaryNode.h
+C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
+../nodeTypes/BSNode.h
+C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
+
+C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
+iostream
+-
+BaseBinaryNode.h
+C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
+
+C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
+
