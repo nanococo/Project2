@@ -11,12 +11,20 @@ iostream
 -
 src/TreesHandlers/BinarySearchTree.h
 C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
+src/helpers/helpers.h
+C:/GitHub_Projects/Project2/src/helpers/helpers.h
 
 C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
 ../nodeTypes/BaseBinaryNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
 ../nodeTypes/BSNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
+
+C:/GitHub_Projects/Project2/src/helpers/helpers.h
+fstream
+-
+../TreesHandlers/BinarySearchTree.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
 
 C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
 iostream

@@ -3,6 +3,7 @@
 
 CMakeFiles/Project2.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BinarySearchTree.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/helpers.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/BSNode.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/BaseBinaryNode.h
 
