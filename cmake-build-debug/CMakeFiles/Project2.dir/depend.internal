@@ -3,7 +3,9 @@
 
 CMakeFiles/Project2.dir/main.cpp.obj
  C:/GitHub_Projects/Project2/main.cpp
+ C:/GitHub_Projects/Project2/src/TreesHandlers/AVLBinaryTree.h
  C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
  C:/GitHub_Projects/Project2/src/helpers/helpers.h
+ C:/GitHub_Projects/Project2/src/nodeTypes/AVLNode.h
  C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
  C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h

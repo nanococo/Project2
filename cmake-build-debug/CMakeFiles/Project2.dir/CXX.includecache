@@ -9,14 +9,22 @@
 C:/GitHub_Projects/Project2/main.cpp
 iostream
 -
-src/TreesHandlers/BinarySearchTree.h
-C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
 src/helpers/helpers.h
 C:/GitHub_Projects/Project2/src/helpers/helpers.h
 
+C:/GitHub_Projects/Project2/src/TreesHandlers/AVLBinaryTree.h
+iostream
+-
+cstdio
+-
+sstream
+-
+algorithm
+-
+../nodeTypes/AVLNode.h
+C:/GitHub_Projects/Project2/src/nodeTypes/AVLNode.h
+
 C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
-../nodeTypes/BaseBinaryNode.h
-C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
 ../nodeTypes/BSNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
 
@@ -26,11 +34,17 @@ fstream
 ../TreesHandlers/BinarySearchTree.h
 C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
 
-C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
-iostream
+C:/GitHub_Projects/Project2/src/nodeTypes/AVLNode.h
+string
 -
 BaseBinaryNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
+
+C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
+iostream
+-
+../TreesHandlers/AVLBinaryTree.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/AVLBinaryTree.h
 
 C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
 

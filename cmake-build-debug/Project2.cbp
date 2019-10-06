@@ -83,10 +83,16 @@
 		<Unit filename="C:/GitHub_Projects/Project2/main.cpp">
 			<Option target="Project2"/>
 		</Unit>
+		<Unit filename="C:/GitHub_Projects/Project2/src/TreesHandlers/AVLBinaryTree.h">
+			<Option target="Project2"/>
+		</Unit>
 		<Unit filename="C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h">
 			<Option target="Project2"/>
 		</Unit>
 		<Unit filename="C:/GitHub_Projects/Project2/src/helpers/helpers.h">
+			<Option target="Project2"/>
+		</Unit>
+		<Unit filename="C:/GitHub_Projects/Project2/src/nodeTypes/AVLNode.h">
 			<Option target="Project2"/>
 		</Unit>
 		<Unit filename="C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h">
