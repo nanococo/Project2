@@ -124,7 +124,7 @@ void BSNode::fullInorder(BSNode *R) {
         cout<< "(" << R->getData()<< ", "<< R->getName() << ")" << " - ";
         if(R->getProductAisleTreePointer()!= nullptr){
             cout << "Second tree inorder for: " << R->getData() << endl;
-            R->getProductAisleTreePointer()->inorder(R->getProductAisleTreePointer()->getAVLRoot());
+            R->getProductAisleTreePointer()->fullInorder(R->getProductAisleTreePointer()->getAVLRoot());
             cout << "End of Second Tree Inorder" << endl;
         }
         fullInorder((BSNode*) R->getRightPointer());

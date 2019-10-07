@@ -18,8 +18,10 @@ public:
     AVLNode *rl_rotat(AVLNode *);
     AVLNode *balance(AVLNode *);
     AVLNode *insert(AVLNode *r, int prodCode, string name);
+    AVLNode *getNodeByProdCode(int prodCode);
     AVLNode *getAVLRoot() const;
     void show(AVLNode*, int);
+    void fullInorder(AVLNode *t);
     void inorder(AVLNode *);
     void preorder(AVLNode *);
     void postorder(AVLNode*);
@@ -28,6 +30,8 @@ public:
 
 private:
     AVLNode *root;
+
+
 };
 
 AVLNode *AVLBinaryTree::getAVLRoot() const {
@@ -131,6 +135,20 @@ void AVLBinaryTree::inorder(AVLNode *t) {
     cout << "(" <<t->getData() << ", " << t->getName()  << ", " << t->getTimesSold() << " ) -";
     inorder((AVLNode*) t->getRightPointer());
 }
+
+void AVLBinaryTree::fullInorder(AVLNode *t) {
+    if (t == nullptr)
+        return;
+    fullInorder((AVLNode*) t->getLeftPointer());
+    cout << "(" <<t->getData() << ", " << t->getName()  << ", " << t->getTimesSold() << " ) -";
+    if(t->getProductAisleBrandTreePointer()!= nullptr){
+        cout << "Third tree inorder for: " << t->getData() << endl;
+        t->getProductAisleBrandTreePointer()->inorder();
+        cout << "End of Second Tree Inorder" << endl;
+    }
+    fullInorder((AVLNode*) t->getRightPointer());
+}
+
 void AVLBinaryTree::preorder(AVLNode *t) {
     if (t == nullptr)
         return;
@@ -148,6 +166,10 @@ void AVLBinaryTree::postorder(AVLNode *t) {
 
 bool AVLBinaryTree::isProdCodeOnTree(int prodCode) {
     return root->isProdCodeInTree(root, prodCode);
+}
+
+AVLNode *AVLBinaryTree::getNodeByProdCode(int prodCode){
+    return root->getNodeByProdCode(root, prodCode);
 }
 //int main() {
 //    int c, i;

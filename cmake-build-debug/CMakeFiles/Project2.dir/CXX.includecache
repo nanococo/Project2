@@ -11,6 +11,8 @@ iostream
 -
 src/helpers/helpers.h
 C:/GitHub_Projects/Project2/src/helpers/helpers.h
+src/TreesHandlers/RBTree.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/RBTree.h
 
 C:/GitHub_Projects/Project2/src/TreesHandlers/AVLBinaryTree.h
 iostream
@@ -28,6 +30,12 @@ C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
 ../nodeTypes/BSNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
 
+C:/GitHub_Projects/Project2/src/TreesHandlers/RBTree.h
+../nodeTypes/RBNode.h
+C:/GitHub_Projects/Project2/src/nodeTypes/RBNode.h
+bits/stdc++.h
+-
+
 C:/GitHub_Projects/Project2/src/helpers/helpers.h
 fstream
 -
@@ -39,6 +47,8 @@ string
 -
 BaseBinaryNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
+../TreesHandlers/RBTree.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/RBTree.h
 
 C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
 iostream
@@ -46,5 +56,9 @@ iostream
 ../TreesHandlers/AVLBinaryTree.h
 C:/GitHub_Projects/Project2/src/TreesHandlers/AVLBinaryTree.h
 
+C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
+
+C:/GitHub_Projects/Project2/src/nodeTypes/RBNode.h
+BaseBinaryNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
 

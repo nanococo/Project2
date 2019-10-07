@@ -4,8 +4,10 @@
 CMakeFiles/Project2.dir/main.cpp.obj: ../main.cpp
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/AVLBinaryTree.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BinarySearchTree.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/RBTree.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/helpers.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/AVLNode.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/BSNode.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/BaseBinaryNode.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/RBNode.h
 
