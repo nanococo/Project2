@@ -5,8 +5,7 @@
 using namespace std;
 
 // Class to represent Red-Black Tree
-class RBTree
-{
+class RBTree{
 private:
     RBNode *root;
 protected:

@@ -31,7 +31,6 @@ public:
 private:
     AVLNode *root;
 
-
 };
 
 AVLNode *AVLBinaryTree::getAVLRoot() const {

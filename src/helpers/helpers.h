@@ -2,6 +2,9 @@
 
 #include <fstream>
 #include "../TreesHandlers/BinarySearchTree.h"
+#include "../TreesHandlers/BTreeClients.h"
+#include "../TreesHandlers/BTreeAdmins.h"
+#include "../TreesHandlers/AATree.h"
 
 
 using namespace std;
@@ -242,6 +245,229 @@ void splitIntoListAisleProductBrand(BinarySearchTree &aisles, const string& full
     }
 }
 
+/**
+ * Splits file contents into formats to be inserted in clientList list
+ * @param clients is the clientList object where to insert
+ * @param fullString is the string with the data to be segmented
+ * @param delimiter Is the character to be used as cut of string
+ * **/
+void splitIntoClients(BTreeClients &clients, const string& fullString, char delimiter){
+    string data1;
+    string data2;
+    string data3;
+    string data4;
+    string data5;
+    int dataCount = 0;
+    for (auto x : fullString){
+        switch(dataCount){
+            case 0:
+                if(x==delimiter){
+                    //cout << data1 << endl;
+                    dataCount++;
+                } else {
+                    data1+=x;
+                }
+                break;
+            case 1:
+                if(x==delimiter){
+                    //cout << data2 << endl;
+                    dataCount++;
+                } else {
+                    data2+=x;
+                }
+                break;
+            case 2:
+                if(x==delimiter){
+                    //cout << data3 << endl;
+                    dataCount++;
+                } else {
+                    data3+=x;
+                }
+                break;
+            case 3:
+                if(x==delimiter){
+                    //cout << data3 << endl;
+                    dataCount++;
+                } else {
+                    data4+=x;
+                }
+                break;
+            case 4:
+                if(x==delimiter){
+                    //cout << data3 << endl;
+                    dataCount++;
+                } else {
+                    data5+=x;
+                }
+                break;
+            default:
+                dataCount=0;
+                data1 = "";
+                data2 = "";
+                data3 = "";
+                data4 = "";
+                data5 = "";
+                break;
+        }
+    }
+    try {
+        int data1Num = stoi(data1);
+        if(clients.search(data1Num) == nullptr){
+            //If client ID is NOT repeated, the insert
+            clients.insert(data1Num, ClientData(data2, data3, data4, data5));
+        }
+    } catch (std::invalid_argument& e){
+        cout << "******************************************************************************************************" << endl;
+        cout << "Number values could not be converted to integer for ids: " << data1 << ";" << data2 << ";" << data3 << ";" << data4 << endl;
+        cout << "Provided numbers are: " << data1<< endl;
+        cout << "******************************************************************************************************" << endl;
+    }
+}
+
+/**
+ * Splits file contents into formats to be inserted in clientList list
+ * @param admins is the clientList object where to insert
+ * @param fullString is the string with the data to be segmented
+ * @param delimiter Is the character to be used as cut of string
+ * **/
+void splitIntoAdmins(BTreeAdmins &admins, const string& fullString, char delimiter){
+    string data1;
+    string data2;
+    int dataCount = 0;
+    for (auto x : fullString){
+        switch(dataCount){
+            case 0:
+                if(x==delimiter){
+                    //cout << data1 << endl;
+                    dataCount++;
+                } else {
+                    data1+=x;
+                }
+                break;
+            case 1:
+                if(x==delimiter){
+                    //cout << data2 << endl;
+                    dataCount++;
+                } else {
+                    data2+=x;
+                }
+                break;
+            default:
+                dataCount=0;
+                data1 = "";
+                data2 = "";
+                break;
+        }
+    }
+    try {
+        int data1Num = stoi(data1);
+        if(admins.search(data1Num) == nullptr){
+            //If client ID is NOT repeated, the insert
+            admins.insert(data1Num, AdminData(data2));
+        }
+    } catch (std::invalid_argument& e){
+        cout << "******************************************************************************************************" << endl;
+        cout << "Number values could not be converted to integer for ids: " << data1 << ";" << data2 << endl;
+        cout << "Provided numbers are: " << data1<< endl;
+        cout << "******************************************************************************************************" << endl;
+    }
+
+}
+
+/**
+ * Splits file contents into formats to be inserted in clientList list
+ * @param inventory is the clientList object where to insert
+ * @param fullString is the string with the data to be segmented
+ * @param delimiter Is the character to be used as cut of string
+ * **/
+void splitIntoInventory(AATree &inventory, const string& fullString, char delimiter){
+    string data1;
+    string data2;
+    string data3;
+    string data4;
+    string data5;
+    string data6;
+    int dataCount = 0;
+    for (auto x : fullString){
+        switch(dataCount){
+            case 0:
+                if(x==delimiter){
+                    //cout << data1 << endl;
+                    dataCount++;
+                } else {
+                    data1+=x;
+                }
+                break;
+            case 1:
+                if(x==delimiter){
+                    //cout << data2 << endl;
+                    dataCount++;
+                } else {
+                    data2+=x;
+                }
+                break;
+            case 2:
+                if(x==delimiter){
+                    //cout << data3 << endl;
+                    dataCount++;
+                } else {
+                    data3+=x;
+                }
+                break;
+            case 3:
+                if(x==delimiter){
+                    //cout << data3 << endl;
+                    dataCount++;
+                } else {
+                    data4+=x;
+                }
+                break;
+            case 4:
+                if(x==delimiter){
+                    //cout << data3 << endl;
+                    dataCount++;
+                } else {
+                    data5+=x;
+                }
+                break;
+            case 5:
+                if(x==delimiter){
+                    //cout << data3 << endl;
+                    dataCount++;
+                } else {
+                    data6+=x;
+                }
+                break;
+            default:
+                dataCount=0;
+                data1 = "";
+                data2 = "";
+                data3 = "";
+                data4 = "";
+                data5 = "";
+                data6 = "";
+                break;
+        }
+    }
+    try{
+        int data1Num = stoi(data1);
+        int data2Num = stoi(data2);
+        int data3Num = stoi(data3);
+        int data5Num = stoi(data5);
+        int data6Num = stoi(data6);
+
+        if (!inventory.isDataPresent(data1+data2+data3)){
+            inventory.lookup(new AANode(data1+data2+data3, data1Num, data2Num, data3Num, data5Num, data6Num, data4));
+        }
+
+    } catch (std::invalid_argument& e){
+        cout << "******************************************************************************************************" << endl;
+        cout << "Number values could not be converted to integer for ids: " << data1 << ";" << data2 << ";" << data3 << ";" << data4 << ";" << data5 << ";" << data6 << endl;
+        cout << "Provided numbers are: " << data1 << ";" << data2 << ";" << data3 << ";" << data5 << ";" << data6 << endl;
+        cout << "******************************************************************************************************" << endl;
+    }
+}
+
 
 /**
  * Initializes a list with values from file
@@ -286,6 +512,51 @@ void initAislesProductBrandTree(BinarySearchTree &aisles){
     while (getline(arch1, line)) {
         if(!line.empty()){
             splitIntoListAisleProductBrand(aisles, line, ';');
+        }
+    }
+}
+
+/**
+ * Initializes a list with values from file
+ * @param clients is the clientList value to check for IDs
+ * **/
+void initClients(BTreeClients &clients){
+    string line;
+    ifstream arch1("data/Clientes.txt");
+
+    while (getline(arch1, line)) {
+        if(!line.empty()){
+            splitIntoClients(clients, line, ';');
+        }
+    }
+}
+
+/**
+ * Initializes a list with values from file
+ * @param admins is the clientList value to check for IDs
+ * **/
+void initAdmins(BTreeAdmins &admins){
+    string line;
+    ifstream arch1("data/Administradores.txt");
+
+    while (getline(arch1, line)) {
+        if(!line.empty()){
+            splitIntoAdmins(admins, line, ';');
+        }
+    }
+}
+
+/**
+ * Initializes a list with values from file
+ * @param inventory is the clientList value to check for IDs
+ * **/
+void initInventory(AATree &inventory){
+    string line;
+    ifstream arch1("data/Inventario.txt");
+
+    while (getline(arch1, line)) {
+        if(!line.empty()){
+            splitIntoInventory(inventory, line, ';');
         }
     }
 }

@@ -7,12 +7,20 @@
 #IncludeRegexTransform: 
 
 C:/GitHub_Projects/Project2/main.cpp
-iostream
--
 src/helpers/helpers.h
 C:/GitHub_Projects/Project2/src/helpers/helpers.h
-src/TreesHandlers/RBTree.h
-C:/GitHub_Projects/Project2/src/TreesHandlers/RBTree.h
+
+C:/GitHub_Projects/Project2/src/TreesHandlers/AATree.h
+iostream
+-
+cstdlib
+-
+cstring
+-
+fstream
+-
+../nodeTypes/AANode.h
+C:/GitHub_Projects/Project2/src/nodeTypes/AANode.h
 
 C:/GitHub_Projects/Project2/src/TreesHandlers/AVLBinaryTree.h
 iostream
@@ -25,6 +33,18 @@ algorithm
 -
 ../nodeTypes/AVLNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/AVLNode.h
+
+C:/GitHub_Projects/Project2/src/TreesHandlers/BTreeAdmins.h
+iostream
+-
+../nodeTypes/BNodeAdmin.h
+C:/GitHub_Projects/Project2/src/nodeTypes/BNodeAdmin.h
+
+C:/GitHub_Projects/Project2/src/TreesHandlers/BTreeClients.h
+iostream
+-
+../nodeTypes/BNodeClient.h
+C:/GitHub_Projects/Project2/src/nodeTypes/BNodeClient.h
 
 C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
 ../nodeTypes/BSNode.h
@@ -41,6 +61,20 @@ fstream
 -
 ../TreesHandlers/BinarySearchTree.h
 C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
+../TreesHandlers/BTreeClients.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/BTreeClients.h
+../TreesHandlers/BTreeAdmins.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/BTreeAdmins.h
+../TreesHandlers/AATree.h
+C:/GitHub_Projects/Project2/src/TreesHandlers/AATree.h
+
+C:/GitHub_Projects/Project2/src/nodeTypes/AANode.h
+string
+-
+utility
+-
+BaseBinaryNode.h
+C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
 
 C:/GitHub_Projects/Project2/src/nodeTypes/AVLNode.h
 string
@@ -49,6 +83,18 @@ BaseBinaryNode.h
 C:/GitHub_Projects/Project2/src/nodeTypes/BaseBinaryNode.h
 ../TreesHandlers/RBTree.h
 C:/GitHub_Projects/Project2/src/TreesHandlers/RBTree.h
+
+C:/GitHub_Projects/Project2/src/nodeTypes/BNodeAdmin.h
+iostream
+-
+utility
+-
+
+C:/GitHub_Projects/Project2/src/nodeTypes/BNodeClient.h
+iostream
+-
+utility
+-
 
 C:/GitHub_Projects/Project2/src/nodeTypes/BSNode.h
 iostream
