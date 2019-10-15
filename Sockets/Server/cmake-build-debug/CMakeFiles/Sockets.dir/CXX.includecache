@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Escritorio Carpetas/TEC/Progra/EDD/Tests/Sockets/Server/server.cpp
+iostream
+-
+winsock2.h
+-
+
