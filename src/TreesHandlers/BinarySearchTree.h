@@ -12,6 +12,7 @@ public:
     void insert(BSNode *node);
     void inOrder();
     void fullInOrder();
+    void printAisleForPurchase();
     bool isEmpty();
     bool isAisleCodeInTree(int aisleCode);
 
@@ -52,4 +53,8 @@ BSNode *BinarySearchTree::getRoot() const {
 
 BSNode *BinarySearchTree::getNodeByAisleCode(int aisleCode) {
     return root->getNodeByAisleCode(root, aisleCode);
+}
+
+void BinarySearchTree::printAisleForPurchase() {
+    BSNode::printAisleForPurchase(root);
 }

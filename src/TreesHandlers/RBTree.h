@@ -17,7 +17,9 @@ public:
     RBTree() { root = nullptr; }
     void insert(const int &n, string name, int amount, int price);
     void inorder();
+    void printBrandsForPurchase();
     void levelOrder();
+    RBNode *getNodeByBrandCode(int brandCode);
     bool isBrandCodeOnList(int brandCode);
 };
 
@@ -29,6 +31,15 @@ void inorderHelper(RBNode *root){
     inorderHelper((RBNode*) root->getLeftPointer());
     cout << "(" <<root->getData() << ", " << root->getName()  << ", " << root->getAmount() << ", "  << root->getPrice() << ", " << root->getTimesSold() << " ) -";
     inorderHelper((RBNode*) root->getRightPointer());
+}
+
+void printBrandsForPurchaseHelper(RBNode *root){
+    if (root == nullptr)
+        return;
+
+    printBrandsForPurchaseHelper((RBNode*) root->getLeftPointer());
+    cout << "Brand Code: " <<root->getData() << " Brand Name: " << root->getName() << " Price: "<< root->getPrice() <<  endl;
+    printBrandsForPurchaseHelper((RBNode*) root->getRightPointer());
 }
 
 /* A utility function to insert a new node with given key
@@ -238,9 +249,8 @@ void RBTree::insert(const int &data, string name, int amount, int price)
 // Function to do inorder and level order traversals
 void RBTree::inorder()	 { inorderHelper(root);}
 void RBTree::levelOrder() { levelOrderHelper(root); }
-
-bool RBTree::isBrandCodeOnList(int brandCode) {
-    return root->isBrandCodeOnList(root, brandCode);
-}
+bool RBTree::isBrandCodeOnList(int brandCode) {return root->isBrandCodeOnList(root, brandCode);}
+void RBTree::printBrandsForPurchase() {printBrandsForPurchaseHelper(root);}
+RBNode *RBTree::getNodeByBrandCode(int brandCode) {return root->getBrandNode(root, brandCode);}
 
 

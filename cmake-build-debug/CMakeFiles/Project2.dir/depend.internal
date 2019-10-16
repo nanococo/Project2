@@ -9,7 +9,15 @@ CMakeFiles/Project2.dir/main.cpp.obj
  C:/GitHub_Projects/Project2/src/TreesHandlers/BTreeClients.h
  C:/GitHub_Projects/Project2/src/TreesHandlers/BinarySearchTree.h
  C:/GitHub_Projects/Project2/src/TreesHandlers/RBTree.h
+ C:/GitHub_Projects/Project2/src/helpers/clientProductStackNode.h
+ C:/GitHub_Projects/Project2/src/helpers/clientQueue.h
+ C:/GitHub_Projects/Project2/src/helpers/clientQueueNode.h
+ C:/GitHub_Projects/Project2/src/helpers/exceptionsHandler.h
  C:/GitHub_Projects/Project2/src/helpers/helpers.h
+ C:/GitHub_Projects/Project2/src/helpers/quickSortHelper.h
+ C:/GitHub_Projects/Project2/src/helpers/salesList.h
+ C:/GitHub_Projects/Project2/src/helpers/salesNode.h
+ C:/GitHub_Projects/Project2/src/modules/modules.h
  C:/GitHub_Projects/Project2/src/nodeTypes/AANode.h
  C:/GitHub_Projects/Project2/src/nodeTypes/AVLNode.h
  C:/GitHub_Projects/Project2/src/nodeTypes/BNodeAdmin.h

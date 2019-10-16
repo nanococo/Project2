@@ -18,6 +18,7 @@ public:
     static void inOrder(BSNode *R);
     static void fullInorder(BSNode *R);
     static bool isAisleCodeInTree(BSNode *R, int i);
+    static void printAisleForPurchase(BSNode *R);
     const string &getName() const;
     int getVisits() const;
     using BaseBinaryNode::getData;
@@ -128,5 +129,15 @@ void BSNode::fullInorder(BSNode *R) {
             cout << "End of Second Tree Inorder" << endl;
         }
         fullInorder((BSNode*) R->getRightPointer());
+    }
+}
+
+void BSNode::printAisleForPurchase(BSNode *R) {
+    if(R == nullptr){
+        return;
+    }else{
+        printAisleForPurchase((BSNode*) R->getLeftPointer());
+        cout << "Aisle Code: " << R->getData()<< " Name:"<< R->getName() << endl;
+        printAisleForPurchase((BSNode*) R->getRightPointer());
     }
 }

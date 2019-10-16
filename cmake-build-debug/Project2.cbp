@@ -107,6 +107,9 @@
 		<Unit filename="C:/GitHub_Projects/Project2/src/helpers/test.h">
 			<Option target="Project2"/>
 		</Unit>
+		<Unit filename="C:/GitHub_Projects/Project2/src/modules/modules.h">
+			<Option target="Project2"/>
+		</Unit>
 		<Unit filename="C:/GitHub_Projects/Project2/src/nodeTypes/AANode.h">
 			<Option target="Project2"/>
 		</Unit>

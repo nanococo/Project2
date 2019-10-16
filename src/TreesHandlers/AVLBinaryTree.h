@@ -22,9 +22,10 @@ public:
     AVLNode *getAVLRoot() const;
     void show(AVLNode*, int);
     void fullInorder(AVLNode *t);
+    void printProductsForPurchase(AVLNode *);
     void inorder(AVLNode *);
     void preorder(AVLNode *);
-    void postorder(AVLNode*);
+    void postorder(AVLNode *);
     void setAVLRoot(AVLNode *newRoot);
     bool isProdCodeOnTree(int prodCode);
 
@@ -170,54 +171,11 @@ bool AVLBinaryTree::isProdCodeOnTree(int prodCode) {
 AVLNode *AVLBinaryTree::getNodeByProdCode(int prodCode){
     return root->getNodeByProdCode(root, prodCode);
 }
-//int main() {
-//    int c, i;
-//    AVLBinaryTree AVLNode;
-//    while (1) {
-//        cout << "1.Insert Element into the tree" << endl;
-//        cout << "2.show Balanced AVL Tree" << endl;
-//        cout << "3.InOrder traversal" << endl;
-//        cout << "4.PreOrder traversal" << endl;
-//        cout << "5.PostOrder traversal" << endl;
-//        cout << "6.Exit" << endl;
-//        cout << "Enter your Choice: ";
-//        cin >> c;
-//        switch (c) {
-//            case 1:
-//                cout << "Enter value to be inserted: ";
-//                cin >> i;
-//                root = AVLNode.insert(root, i);
-//                break;
-//            case 2:
-//                if (root == NULL) {
-//                    cout << "Tree is Empty" << endl;
-//                    continue;
-//                }
-//                cout << "Balanced AVL Tree:" << endl;
-//                AVLNode.show(root, 1);
-//                cout<<endl;
-//                break;
-//            case 3:
-//                cout << "Inorder Traversal:" << endl;
-//                AVLNode.inorder(root);
-//                cout << endl;
-//                break;
-//            case 4:
-//                cout << "Preorder Traversal:" << endl;
-//                AVLNode.preorder(root);
-//                cout << endl;
-//                break;
-//            case 5:
-//                cout << "Postorder Traversal:" << endl;
-//                AVLNode.postorder(root);
-//                cout << endl;
-//                break;
-//            case 6:
-//                exit(1);
-//                break;
-//            default:
-//                cout << "Wrong Choice" << endl;
-//        }
-//    }
-//    return 0;
-//}
+
+void AVLBinaryTree::printProductsForPurchase(AVLNode *t) {
+    if (t == nullptr)
+        return;
+    printProductsForPurchase((AVLNode*) t->getLeftPointer());
+    cout << "Product Code:" <<t->getData() << ", Product Name:" << t->getName() << endl;
+    printProductsForPurchase((AVLNode*) t->getRightPointer());
+}

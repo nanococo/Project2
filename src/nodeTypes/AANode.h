@@ -71,6 +71,9 @@ public:
 
     void setKey(const string &key);
 
+    static AANode *getNodeByAisleProdBrandCodeHelper(AANode *R, string i);
+    static bool isBasicProductHelper(AANode *R, string i);
+
 
 private:
     int count, level;
@@ -192,5 +195,25 @@ bool AANode::isCodeInTree(AANode *R, string i) {
             }
         }
     }
+}
+
+AANode *AANode::getNodeByAisleProdBrandCodeHelper(AANode *R, string i){
+    if (R == nullptr){
+        return R;
+    } else {
+        if(R->getKey()==i){
+            return R;
+        } else{
+            if (i>R->getKey()){
+                return getNodeByAisleProdBrandCodeHelper(R->getRight(), i);
+            } else {
+                return getNodeByAisleProdBrandCodeHelper(R->getLeft(), i);
+            }
+        }
+    }
+}
+
+bool AANode::isBasicProductHelper(AANode *R, string i) {
+    return getNodeByAisleProdBrandCodeHelper(R, i)->getIsBasicProd();
 }
 

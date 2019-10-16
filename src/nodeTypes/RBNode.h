@@ -19,6 +19,7 @@ public:
 
 
     RBNode *getParent() const;
+    RBNode *getBrandNode(RBNode *R, int i);
     void setParent(RBNode *newParent);
     void setColor(Color newColor);
     void setName(const string &newName);
@@ -107,6 +108,22 @@ bool RBNode::isBrandCodeOnList(RBNode *R, int i) {
                 return isBrandCodeOnList((RBNode*) R->getRightPointer(), i);
             } else {
                 return isBrandCodeOnList((RBNode*) R->getLeftPointer(), i);
+            }
+        }
+    }
+}
+
+RBNode *RBNode::getBrandNode(RBNode *R, int i){
+    if (R == nullptr){
+        return R;
+    } else {
+        if(R->getData()==i){
+            return R;
+        } else{
+            if (i>R->getData()){
+                return getBrandNode((RBNode*) R->getRightPointer(), i);
+            } else {
+                return getBrandNode((RBNode*) R->getLeftPointer(), i);
             }
         }
     }

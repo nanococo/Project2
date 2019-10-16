@@ -13,6 +13,8 @@ public:
         this->email = "";
         this->phoneNumber = "";
         this->cityCode = "";
+        this->amountSpent = 0;
+        this->billingCount = 0;
     }
 
     explicit ClientData(string name, string cityCode, string phoneNumber, string email){
@@ -20,6 +22,8 @@ public:
         this->email = email;
         this->phoneNumber = phoneNumber;
         this->cityCode = cityCode;
+        this->amountSpent = 0;
+        this->billingCount = 0;
     }
 
     const string &getName() const;
@@ -38,13 +42,41 @@ public:
 
     void setCityCode(const string &cityCode);
 
+    float getAmountSpent() const;
+
+    void setAmountSpent(float amountSpent);
+
+    int getBillingCount() const;
+
+    void setBillingCount(int billingCount);
+
+    void incBillingCount();
+
+
 private:
     string name;
     string email;
     string cityCode;
     string phoneNumber;
-
+    float amountSpent;
+    int billingCount;
 };
+
+float ClientData::getAmountSpent() const {
+    return amountSpent;
+}
+
+void ClientData::setAmountSpent(float amountSpent) {
+    ClientData::amountSpent = amountSpent;
+}
+
+int ClientData::getBillingCount() const {
+    return billingCount;
+}
+
+void ClientData::setBillingCount(int billingCount) {
+    ClientData::billingCount = billingCount;
+}
 
 const string &ClientData::getName() const {
     return name;
@@ -285,4 +317,8 @@ void BTreeNode::splitChild(int i, BTreeNode *y)
 
     // Increment count of keys in this node
     n = n + 1;
+}
+
+void ClientData::incBillingCount() {
+    billingCount++;
 }

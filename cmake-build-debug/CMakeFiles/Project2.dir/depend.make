@@ -8,7 +8,15 @@ CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BTreeAdmins.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BTreeClients.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BinarySearchTree.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/RBTree.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/clientProductStackNode.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/clientQueue.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/clientQueueNode.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/exceptionsHandler.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/helpers.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/quickSortHelper.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/salesList.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/salesNode.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/modules/modules.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/AANode.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/AVLNode.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/nodeTypes/BNodeAdmin.h

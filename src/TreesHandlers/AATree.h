@@ -22,13 +22,25 @@ public:
     void print(AANode *);
     int countAANode(AANode *);
     bool isDataPresent(string data);
+    bool isBasicProduct(string data);
 
     AANode *getRoot() const;
+    AANode *getNodeByAisleProdBrandCode(string data);
 
     void setRoot(AANode *root);
 
+
+
 private:
     AANode *root;
+
+    AANode *getNodeByAisleProdBrandCodeHelper(string code){
+        return AANode::getNodeByAisleProdBrandCodeHelper(root, code);
+    }
+
+    bool isBasicProductHelper(string code){
+        return AANode::isBasicProductHelper(root, code);
+    }
 };
 
 AANode *AATree::getRoot() const {
@@ -182,4 +194,12 @@ int AATree::countAANode(AANode* temp)
 
 bool AATree::isDataPresent(string data) {
     return AANode::isCodeInTree(root, data);
+}
+
+AANode *AATree::getNodeByAisleProdBrandCode(string data){
+    return getNodeByAisleProdBrandCodeHelper(data);
+}
+
+bool AATree::isBasicProduct(string data) {
+    return false;
 }
