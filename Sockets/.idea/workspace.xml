@@ -47,8 +47,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.Sockets (1)">
+  <component name="RunManager" selected="CMake Application.Sockets (2)">
     <configuration name="Sockets (1)" type="CMakeRunConfiguration" factoryName="Application" singleton="false" temporary="true" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Sockets" RUN_TARGET_NAME="Sockets" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Sockets (2)" type="CMakeRunConfiguration" factoryName="Application" temporary="true" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Sockets" RUN_TARGET_NAME="Sockets" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -66,9 +71,11 @@
     <list>
       <item itemvalue="CMake Application.Sockets" />
       <item itemvalue="CMake Application.Sockets (1)" />
+      <item itemvalue="CMake Application.Sockets (2)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="CMake Application.Sockets (2)" />
         <item itemvalue="CMake Application.Sockets (1)" />
         <item itemvalue="CMake Application.Sockets" />
       </list>
@@ -90,11 +97,26 @@
       <workItem from="1570924769018" duration="5037000" />
       <workItem from="1571076364058" duration="52000" />
       <workItem from="1571076484436" duration="2321000" />
-      <workItem from="1571089176652" duration="3042000" />
+      <workItem from="1571089176652" duration="4319000" />
+      <workItem from="1571197198180" duration="1224000" />
+      <workItem from="1571198737479" duration="1858000" />
+      <workItem from="1571242534207" duration="5022000" />
+      <workItem from="1571277707893" duration="4499000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Server/server.cpp</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -1,0 +1,3 @@
+D:/Escritorio Carpetas/TEC/Progra/EDD/Tests/Sockets/Client2/cmake-build-debug/CMakeFiles/Client2.dir
+D:/Escritorio Carpetas/TEC/Progra/EDD/Tests/Sockets/Client2/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Escritorio Carpetas/TEC/Progra/EDD/Tests/Sockets/Client2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

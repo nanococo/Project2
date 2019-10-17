@@ -11,4 +11,10 @@ iostream
 -
 winsock2.h
 -
+cstring
+-
+thread
+-
+io.h
+-
 

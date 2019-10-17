@@ -52,18 +52,35 @@ int main() {
     }
     cout<<"Connection Success"<<endl;
 
-    //Send data
-    iSend = send(TCPClientSocket, SendBuffer, iSendBuffer, 0);
-    if(iSend == SOCKET_ERROR){
-        cout<<"Send failed"<<endl;
-    }
-    cout<<"Data sent successful"<<endl;
+    //Chat con el Server
+    while(true){
+        recv(TCPClientSocket, RecvBuffer, iRecvBuffer, 0);
+        //Esto sirve para ver que va a mandar el mae
+        string request;
+        cin>>request;
 
-    iRecv = recv(TCPClientSocket, RecvBuffer, iRecvBuffer, 0);
-    if(iRecv == SOCKET_ERROR){
-        cout<<"No data recived"<<endl;
+        if(request == "1"){
+            //Aqui el mae manda el 1 para que el server lo identifique bien y enteinda que queremos el dato 1
+            char sendRequest[4096]="1";
+            int sizeOfRequest = sizeof(sendRequest)+1;
+            send(TCPClientSocket, sendRequest, sizeOfRequest, 0);
+
+        }
+        //Si request == "s" el mae manda una s que el server interpreta como una salida
+        //Ahora que lo estoy viendo creo que aqui se puede hacer el break de una lololol
+        else if(request == "s"){
+            char sendRequest[4096]="s";
+            int sizeOfRequest = sizeof(sendRequest)+1;
+            send(TCPClientSocket, sendRequest, sizeOfRequest, 0);
+
+        }
+        if(RecvBuffer[0]=='s'){
+            cout<<"End of connection"<<endl;
+            break;
+        }
+
+        cout<<RecvBuffer<<endl;
     }
-    cout<<RecvBuffer<<endl;
 
     //Close socket
     iCloseSocket = closesocket(TCPClientSocket);

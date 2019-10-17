@@ -2,16 +2,16 @@
 <project version="4">
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Client" targetName="Client" />
+      <config projectName="Client2" targetName="Client2" />
     </generated>
   </component>
-  <component name="CMakeSettings" AUTO_RELOAD="true">
+  <component name="CMakeSettings">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d97116ee-83e4-4642-8168-d7140888c58c" name="Default Changelist" comment="" />
+    <list default="true" id="eb9808e8-7e39-42c8-9882-aea0c5cc11c4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +22,9 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
-  <component name="ProjectId" id="1Rq6aXpIO3jMExt2H49eBIut6hE" />
+  <component name="ProjectId" id="1SIKeY5VjCR5uqYF7yiMjNYJibN" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -40,7 +39,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Client" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Client" TARGET_NAME="Client" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Client" RUN_TARGET_NAME="Client">
+    <configuration name="Client2" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Client2" TARGET_NAME="Client2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Client2" RUN_TARGET_NAME="Client2">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -51,32 +50,16 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d97116ee-83e4-4642-8168-d7140888c58c" name="Default Changelist" comment="" />
-      <created>1570382342939</created>
+      <changelist id="eb9808e8-7e39-42c8-9882-aea0c5cc11c4" name="Default Changelist" comment="" />
+      <created>1571245765594</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1570382342939</updated>
-      <workItem from="1570382346950" duration="2764000" />
-      <workItem from="1570467875307" duration="232000" />
-      <workItem from="1570927301476" duration="2798000" />
-      <workItem from="1571076552545" duration="1594000" />
-      <workItem from="1571244321578" duration="2671000" />
-      <workItem from="1571277767607" duration="4288000" />
+      <updated>1571245765594</updated>
+      <workItem from="1571245770393" duration="371000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/client.cpp</url>
-          <line>55</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
