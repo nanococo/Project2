@@ -1,8 +1,46 @@
 #include <iostream>
 #include <winsock2.h>
 #include <cstring>
-using namespace std;
+#include <thread>
+#include <io.h>
 
+using namespace std;
+//Basic chat
+void clientHandler(SOCKET client){
+
+    while(true) {
+        char recvBuffer[4096];
+        int sizeOfRecv = sizeof(recvBuffer);
+        int request = recv(client, recvBuffer, sizeOfRecv, 0);
+        int sendToClient;
+        cout<<recvBuffer<<endl;
+        if (request == SOCKET_ERROR) {
+            cout << "No socket detected" << endl;
+            break;
+        }
+        else {
+            //Si el mae recibe un '1' en la posicion 0 del char entonces entra aqui
+            //Vamos a tener que manejarlo asi
+            if (recvBuffer[0] == '1') {
+
+                char data[4096] = "data1";
+                int dataSize = sizeof(data) + 1;
+
+                sendToClient = send(client, data, dataSize, 0);
+                if (sendToClient == SOCKET_ERROR) {
+                    cout << "data sending unsuccessful" << endl;
+                }
+            } else if (recvBuffer[0] == 's'){
+                char data[4096] = "s";
+                int dataSize = sizeof(data) + 1;
+
+                send(client, data, dataSize, 0);
+
+                break;
+            }
+        }
+    }
+}
 int main()
 {
     cout<< "<-------TCP server------>"<<endl;
@@ -25,8 +63,7 @@ int main()
     SOCKET sAcceptSocket;
 
     int iSend;
-    // Aqui esta el mensaje default
-    char SenderBuffer[4096] = "Holis del server";
+    char SenderBuffer[4096] = "hello from server";
     int iSenderBuffer = sizeof(SenderBuffer)+1;
 
     int  iRecv;
@@ -64,44 +101,22 @@ int main()
         cout<<"Failed listen"<<endl;
     }
     cout<<"Successful listen"<<endl;
+// <--------------------------------------------------->
+    //Client handler
+    while(true){
+        //Accept request
 
-    //Accept request
-    sAcceptSocket = accept(TCPServerSocket, (SOCKADDR*)&TCPClientAdd, &iTCPClientAdd);
-    if(sAcceptSocket == INVALID_SOCKET){
-        cout<<"Conection failed"<<endl;
-    }
-    cout<<"Conection accepted"<<endl;
-
-    //Aqui el mae recibe el request
-    iRecv = recv(sAcceptSocket, RecvBuffer, iRecvBuffer, 0);
-    if(RecvBuffer == "1"){
-
-        //Aqui el mae tendria que re-definir las varas para que mande lo que quiere
-
-        //Se hace un if por cada request
-
-
-        iSend = send(sAcceptSocket, SenderBuffer, iSenderBuffer, 0);
-        if(iSend == SOCKET_ERROR){
-            cout<<"Send failed"<<endl;
+        sAcceptSocket = accept(TCPServerSocket, (SOCKADDR*)&TCPClientAdd, &iTCPClientAdd);
+        if(sAcceptSocket == INVALID_SOCKET){
+            cout<<"Conection failed"<<endl;
         }
-        cout<<"Data sent successful"<<endl;
-    }
-    else if(iRecv == SOCKET_ERROR){
-        cout<<"No data recived"<<endl;
-    }
-    cout<<RecvBuffer<<endl;
+        else{
+            //En buena teoria el mae crea un hilo por cliente
+            thread newClient(clientHandler, sAcceptSocket);
+            newClient.join();
+        }
 
-    //Close socket
-    iCloseSocket = closesocket(TCPServerSocket);
-    if(iCloseSocket == SOCKET_ERROR){
-        cout<<"Socket close error"<<endl;
     }
-    cout<<"Socket closed"<<endl;
-
-    //CleanUp
-    iWsaCleanup = WSACleanup();
-
 
     return 0;
 }
