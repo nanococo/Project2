@@ -40,7 +40,9 @@ int main() {
             mod.checkGondolas(inventory, sales, aisles);
         } else if (op=="6"){
             mod.reloadInventory(inventory);
-        }else {
+        } else if(op=="7"){
+            mod.reportingModuleMainMenu(aisles, sales, clients, inventory);
+        } else {
             break;
         }
     }

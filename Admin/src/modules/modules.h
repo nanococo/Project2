@@ -13,6 +13,7 @@ public:
     static void checkModule(BinarySearchTree &aisles, AATree &inventory);
     static void checkGondolas(AATree &inventory, salesList &sales, BinarySearchTree &aisleList);
     static void reloadInventory(AATree &inventory);
+    static void reportingModuleMainMenu(BinarySearchTree &aisleList, salesList &sales, BTreeClients &clients, AATree &inventory);
     void billingModule(BinarySearchTree &aisles, clientQueue &clientsQ, BTreeClients &clients, AATree &inventory, salesList &sales);
     void modifyModule(BinarySearchTree &aisles, AATree &inventory);
 
@@ -773,4 +774,8 @@ void modules::reloadInventory(AATree &inventory) {
     initInventory(inventory);
 
     cout << "Inventory restock successful" << endl;
+}
+
+void modules::reportingModuleMainMenu(BinarySearchTree &aisleList, salesList &sales, BTreeClients &clients, AATree &inventory) {
+
 }
