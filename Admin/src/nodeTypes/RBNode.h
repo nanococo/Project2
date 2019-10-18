@@ -26,6 +26,7 @@ public:
     void setAmount(int newAmount);
     void setPrice(int newPrice);
     void setTimesSold(int newTimesSold);
+    void generateBrand(RBNode *R, ofstream &outfile);
     bool getColor() const;
     bool isBrandCodeOnList(RBNode *R, int i);
     const string &getName() const;
@@ -127,4 +128,13 @@ RBNode *RBNode::getBrandNode(RBNode *R, int i){
             }
         }
     }
+}
+
+void RBNode::generateBrand(RBNode *R, ofstream &outfile) {
+    if (R == nullptr)
+        return;
+
+    generateBrand((RBNode*) R->getLeftPointer(), outfile);
+    outfile << "Brand Code: " << R->getData() << ", Brand Name: " << R->getName() << endl;
+    generateBrand((RBNode*) R->getRightPointer(), outfile);
 }

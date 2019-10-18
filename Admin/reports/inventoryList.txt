@@ -1,0 +1,7 @@
+List of Inventory. 
+Aisle code: 012051, Prod Code: 20, Brand Code: 51, Name: Luisiana, Stock Amount: 50, Is Basic product: 1
+Aisle code: 012067, Prod Code: 20, Brand Code: 67, Name: SalSol, Stock Amount: 10, Is Basic product: 0
+Aisle code: 013436, Prod Code: 34, Brand Code: 36, Name: Rojitos, Stock Amount: 35, Is Basic product: 0
+Aisle code: 152837, Prod Code: 28, Brand Code: 37, Name: Kerns, Stock Amount: 16, Is Basic product: 0
+Aisle code: 204567, Prod Code: 45, Brand Code: 67, Name: Blanquita, Stock Amount: 44, Is Basic product: 0
+Aisle code: 47338, Prod Code: 73, Brand Code: 38, Name: CintaAzul, Stock Amount: 27, Is Basic product: 1

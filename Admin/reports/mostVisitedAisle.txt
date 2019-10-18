@@ -1,0 +1,5 @@
+Most visited aisle report. 
+Aisle Code: 1 Aisle Name: Abarrotes Visits: 0
+Aisle Code: 4 Aisle Name: Carnes Visits: 0
+Aisle Code: 15 Aisle Name: Bebidas Visits: 0
+Aisle Code: 20 Aisle Name: Limpieza Visits: 0

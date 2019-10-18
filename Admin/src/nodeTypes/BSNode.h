@@ -12,22 +12,27 @@ public:
         this->productAisleTreePointer = nullptr;
     }
 
-    void setVisits(int newName);
+    void setProductAisleTreePointer(AVLBinaryTree *newProductAisleTreePointer);
     void setName(const string &newName);
     void BSNodeInsert(BSNode *node);
+    void setVisits(int newName);
+    void incVisits();
     static void inOrder(BSNode *R);
     static void fullInorder(BSNode *R);
-    static bool isAisleCodeInTree(BSNode *R, int i);
     static void printAisleForPurchase(BSNode *R);
+    static void getMostVisitedValue(BSNode *R, int &highestValue);
+    static void getLeastVisitedValue(BSNode *R, int &lowestValue);
+    static void generateAisles(BSNode *R, ofstream &outfile);
+    static void generateMostVisitedAisleReport(BSNode *R, int highestValue, ofstream &outfile);
+    static void generateLeastVisitedAisleReport(BSNode *R, int highestValue, ofstream &outfile);
+    static bool isAisleCodeInTree(BSNode *R, int i);
     const string &getName() const;
     int getVisits() const;
     using BaseBinaryNode::getData;
-
     BSNode *getNodeByAisleCode(BSNode *R, int i);
-
     AVLBinaryTree *getProductAisleTreePointer() const;
 
-    void setProductAisleTreePointer(AVLBinaryTree *newProductAisleTreePointer);
+
 
 private:
     AVLBinaryTree *productAisleTreePointer;
@@ -49,6 +54,10 @@ int BSNode::getVisits() const {
 
 void BSNode::setVisits(int newName) {
     BSNode::visits = newName;
+}
+
+void BSNode::incVisits(){
+    BSNode::visits++;
 }
 
 AVLBinaryTree *BSNode::getProductAisleTreePointer() const {
@@ -139,5 +148,71 @@ void BSNode::printAisleForPurchase(BSNode *R) {
         printAisleForPurchase((BSNode*) R->getLeftPointer());
         cout << "Aisle Code: " << R->getData()<< " Name:"<< R->getName() << endl;
         printAisleForPurchase((BSNode*) R->getRightPointer());
+    }
+}
+
+void BSNode::getMostVisitedValue(BSNode *R, int &highestValue) {
+    if(R == nullptr){
+        return;
+    }else{
+        getMostVisitedValue((BSNode*) R->getLeftPointer(), highestValue);
+
+        if(R->getVisits() >= highestValue){
+            highestValue = R->getVisits();
+        }
+
+        getMostVisitedValue((BSNode*) R->getRightPointer(), highestValue);
+    }
+}
+
+void BSNode::getLeastVisitedValue(BSNode *R, int &lowestValue) {
+    if(R == nullptr){
+        return;
+    }else{
+        getLeastVisitedValue((BSNode*) R->getLeftPointer(), lowestValue);
+
+        if(R->getVisits() <= lowestValue){
+            lowestValue = R->getVisits();
+        }
+
+        getLeastVisitedValue((BSNode*) R->getRightPointer(), lowestValue);
+    }
+}
+
+void BSNode::generateMostVisitedAisleReport(BSNode *R, int highestValue, ofstream &outfile) {
+    if(R == nullptr){
+        return;
+    }else{
+        generateMostVisitedAisleReport((BSNode*) R->getLeftPointer(), highestValue, outfile);
+
+        if(R->getVisits() >= highestValue){
+            outfile << "Aisle Code: " << R->getData() << " Aisle Name: " << R->getName() << " Visits: " << R->getVisits() << endl;
+        }
+
+        generateMostVisitedAisleReport((BSNode*) R->getRightPointer(), highestValue, outfile);
+    }
+}
+
+void BSNode::generateLeastVisitedAisleReport(BSNode *R, int highestValue, ofstream &outfile) {
+    if(R == nullptr){
+        return;
+    }else{
+        generateMostVisitedAisleReport((BSNode*) R->getLeftPointer(), highestValue, outfile);
+
+        if(R->getVisits() <= highestValue){
+            outfile << "Aisle Code: " << R->getData() << " Aisle Name: " << R->getName() << " Visits: " << R->getVisits() << endl;
+        }
+
+        generateMostVisitedAisleReport((BSNode*) R->getRightPointer(), highestValue, outfile);
+    }
+}
+
+void BSNode::generateAisles(BSNode *R, ofstream &outfile) {
+    if(R == nullptr){
+        return;
+    }else{
+        generateAisles((BSNode*) R->getLeftPointer(), outfile);
+        outfile << "Aisle Code: " << R->getData() << " Aisle Name: " << R->getName() << " Visits: " << R->getVisits() << endl;
+        generateAisles((BSNode*) R->getRightPointer(), outfile);
     }
 }

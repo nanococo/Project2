@@ -1,0 +1,4 @@
+Least expensive bill report. 
+Client Id: 1234567 Client Name: Juan Perez Amount spent: 0
+Client Id: 1290738 Client Name: Jose Ramirez Amount spent: 0
+Client Id: 2345678 Client Name: Ana Campos Amount spent: 0

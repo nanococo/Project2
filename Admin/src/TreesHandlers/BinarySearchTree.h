@@ -4,7 +4,7 @@
 
 class BinarySearchTree {
 public:
-    explicit BinarySearchTree(){root= nullptr;}
+    explicit BinarySearchTree(){root= nullptr;highestVisitedValue=lowestVisitedValue=0;}
 
 
     BSNode *getRoot() const;
@@ -15,9 +15,13 @@ public:
     void printAisleForPurchase();
     bool isEmpty();
     bool isAisleCodeInTree(int aisleCode);
+    void generateAisles(string path);
+    void generateMostVisitedAisleReport(string path);
+    void generateLeastVisitedAisleReport(string path);
 
 
-
+    int highestVisitedValue;
+    int lowestVisitedValue;
 
 private:
     BSNode *root;
@@ -57,4 +61,37 @@ BSNode *BinarySearchTree::getNodeByAisleCode(int aisleCode) {
 
 void BinarySearchTree::printAisleForPurchase() {
     BSNode::printAisleForPurchase(root);
+}
+
+void BinarySearchTree::generateMostVisitedAisleReport(string path) {
+    ofstream outfile (path);
+    outfile << "Most visited aisle report. " << endl;
+    BSNode::getMostVisitedValue(root, highestVisitedValue);
+    BSNode::generateMostVisitedAisleReport(root, highestVisitedValue, outfile);
+
+    outfile.flags();
+    outfile.close();
+    cout << "Report generated successfully..." << endl;
+}
+
+void BinarySearchTree::generateLeastVisitedAisleReport(string path) {
+    ofstream outfile (path);
+    outfile << "Least visited aisle report. " << endl;
+    lowestVisitedValue = root->getVisits();
+    BSNode::getLeastVisitedValue(root, lowestVisitedValue);
+    BSNode::generateLeastVisitedAisleReport(root, lowestVisitedValue, outfile);
+
+    outfile.flags();
+    outfile.close();
+    cout << "Report generated successfully..." << endl;
+}
+
+void BinarySearchTree::generateAisles(string path) {
+    ofstream outfile (path);
+    outfile << "Aisles List. " << endl;
+    BSNode::generateAisles(root, outfile);
+
+    outfile.flags();
+    outfile.close();
+    cout << "Report generated successfully..." << endl;
 }

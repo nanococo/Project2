@@ -17,6 +17,8 @@ int main() {
     salesList sales;
     modules mod;
 
+    cout << aisles.getNodeByAisleCode(1)->getProductAisleTreePointer()->isProdCodeOnTree(20) << endl;
+
     while (true){
         string op;
         cout << "Welcome to Krogers Admin Modules. Please choose an option" << endl;

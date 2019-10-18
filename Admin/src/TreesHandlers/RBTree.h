@@ -19,6 +19,7 @@ public:
     void inorder();
     void printBrandsForPurchase();
     void levelOrder();
+    void generateBrand(string path, int aisleCode, int prodCode);
     RBNode *getNodeByBrandCode(int brandCode);
     bool isBrandCodeOnList(int brandCode);
 };
@@ -252,5 +253,16 @@ void RBTree::levelOrder() { levelOrderHelper(root); }
 bool RBTree::isBrandCodeOnList(int brandCode) {return root->isBrandCodeOnList(root, brandCode);}
 void RBTree::printBrandsForPurchase() {printBrandsForPurchaseHelper(root);}
 RBNode *RBTree::getNodeByBrandCode(int brandCode) {return root->getBrandNode(root, brandCode);}
+
+void RBTree::generateBrand(string path, int aisleCode, int prodCode) {
+    ofstream outfile (path);
+    outfile << "Products List for aisle: " << aisleCode << endl;
+
+    root->generateBrand(root, outfile);
+
+    outfile.flags();
+    outfile.close();
+    cout << "Report generated successfully..." << endl;
+}
 
 

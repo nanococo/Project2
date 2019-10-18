@@ -560,3 +560,97 @@ void initInventory(AATree &inventory){
         }
     }
 }
+
+static void mostProductPerAisle(const string& path, BinarySearchTree &aisleList) {
+    bool isValidOption = false;
+    while (!isValidOption){
+        cout << "Please select an aisle: " << endl;
+
+        //Prints aisles
+        aisleList.printAisleForPurchase();
+
+        string chosenAisle;
+        cin >> chosenAisle;
+
+        try {
+            int aisleIndex = stoi(chosenAisle);
+            isValidOption = true;
+            auto *selectedAisle = aisleList.getNodeByAisleCode(aisleIndex);
+
+            selectedAisle->getProductAisleTreePointer()->generateMostBoughtProd(path, selectedAisle->getData());
+        } catch (invalid_argument &e) {
+            cout << "Not a valid option. Try again" << endl;
+        }
+    }
+}
+
+static void generateProductsReport(const string& path, BinarySearchTree &aisleList){
+    bool isValidOption = false;
+    while (!isValidOption){
+        cout << "Please select an aisle: " << endl;
+
+        //Prints aisles
+        aisleList.printAisleForPurchase();
+
+        string chosenAisle;
+        cin >> chosenAisle;
+
+        try {
+            int aisleIndex = stoi(chosenAisle);
+            isValidOption = true;
+            auto *selectedAisle = aisleList.getNodeByAisleCode(aisleIndex);
+
+            selectedAisle->getProductAisleTreePointer()->generateProd(path, selectedAisle->getData());
+        } catch (invalid_argument &e) {
+            cout << "Not a valid option. Try again" << endl;
+        }
+    }
+}
+
+static void generateBrandsReport(const string& path, BinarySearchTree aisles){
+    while (true){
+        try {
+            cout << "Please select an aisle (numeric code): " << endl;
+
+            //Prints aisles
+            aisles.printAisleForPurchase();
+
+            string chosenAisleString;
+            int chosenAisle;
+            cin >> chosenAisleString;
+            chosenAisle = stoi(chosenAisleString);
+
+            if (aisles.isAisleCodeInTree(chosenAisle)) {
+                auto *selectedAisle = aisles.getNodeByAisleCode(chosenAisle);
+
+                if (selectedAisle->getProductAisleTreePointer() != nullptr) {
+                    cout << "Please select a product for aisle (numeric code): " << selectedAisle->getName() << endl;
+
+                    selectedAisle->getProductAisleTreePointer()->printProductsForPurchase(selectedAisle->getProductAisleTreePointer()->getAVLRoot());
+
+                    string chosenProdString;
+                    int chosenProd;
+                    cin >> chosenProdString;
+                    chosenProd = stoi(chosenProdString);
+
+                    if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenProd)) {
+                        auto *selectedProd = selectedAisle->getProductAisleTreePointer()->getNodeByProdCode(chosenProd);
+
+                        selectedProd->getProductAisleBrandTreePointer()->generateBrand(path, chosenAisle, chosenProd);
+                        break;
+
+
+                    } else {
+                        cout << "ERROR: No such product on system. Please Try Again." << endl;
+                    }
+                } else {
+                    cout << "ERROR: There are no Products associated to given Aisle" << endl;
+                }
+            } else {
+                cout << "ERROR: No such aisle on system. Please Try Again." << endl;
+            }
+        } catch (std::invalid_argument& e){
+            cout << "Value is not numeric. Please try again" << endl;
+        }
+    }
+}

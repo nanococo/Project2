@@ -1,0 +1,4 @@
+Most bought prod on aisle: 1
+Prod Code: 20 Prod Name: Arroz Times bought: 0
+Prod Code: 34 Prod Name: Frijoles Times bought: 0
+Prod Code: 65 Prod Name: Garbanzos Times bought: 0

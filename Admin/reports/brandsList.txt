@@ -1,0 +1,3 @@
+Products List for aisle: 1
+Brand Code: 51, Brand Name: Luisiana
+Brand Code: 67, Brand Name: SalSol

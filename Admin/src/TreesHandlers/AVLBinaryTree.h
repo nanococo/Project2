@@ -8,7 +8,7 @@ using namespace std;
 
 class AVLBinaryTree {
 public:
-    explicit AVLBinaryTree() { root = nullptr;}
+    explicit AVLBinaryTree() { root = nullptr;highestBoughValue=lowestBoughtValue=0;}
     
     static int height(AVLNode *);
     static int difference(AVLNode *);
@@ -20,6 +20,8 @@ public:
     AVLNode *insert(AVLNode *r, int prodCode, string name);
     AVLNode *getNodeByProdCode(int prodCode);
     AVLNode *getAVLRoot() const;
+    void generateMostBoughtProd(const string &path, int aisleCode);
+    void generateProd(const string &path, int aisleCode);
     void show(AVLNode*, int);
     void fullInorder(AVLNode *t);
     void printProductsForPurchase(AVLNode *);
@@ -28,6 +30,9 @@ public:
     void postorder(AVLNode *);
     void setAVLRoot(AVLNode *newRoot);
     bool isProdCodeOnTree(int prodCode);
+
+    int highestBoughValue;
+    int lowestBoughtValue;
 
 private:
     AVLNode *root;
@@ -178,4 +183,27 @@ void AVLBinaryTree::printProductsForPurchase(AVLNode *t) {
     printProductsForPurchase((AVLNode*) t->getLeftPointer());
     cout << "Product Code:" <<t->getData() << ", Product Name:" << t->getName() << endl;
     printProductsForPurchase((AVLNode*) t->getRightPointer());
+}
+
+void AVLBinaryTree::generateMostBoughtProd(const string &path, int aisleCode){
+    ofstream outfile (path);
+    outfile << "Most bought prod on aisle: " << aisleCode << endl;
+
+    AVLNode::getMostBoughtValue(root, highestBoughValue);
+    AVLNode::generateMostBoughtProd(root, highestBoughValue, outfile);
+
+    outfile.flags();
+    outfile.close();
+    cout << "Report generated successfully..." << endl;
+}
+
+void AVLBinaryTree::generateProd(const string &path, int aisleCode) {
+    ofstream outfile (path);
+    outfile << "Products List for aisle: " << aisleCode << endl;
+
+    AVLNode::generateProductsList(root, outfile);
+
+    outfile.flags();
+    outfile.close();
+    cout << "Report generated successfully..." << endl;
 }

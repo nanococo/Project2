@@ -221,10 +221,10 @@ void modules::modifyModule(BinarySearchTree &aisles, AATree &inventory) {
 
                         string chosenProdString;
                         int chosenProd;
-                        cin >> chosenAisleString;
-                        chosenProd = stoi(chosenAisleString);
+                        cin >> chosenProdString;
+                        chosenProd = stoi(chosenProdString);
 
-                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenAisle)) {
+                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenProd)) {
                             auto *selectedProd = selectedAisle->getProductAisleTreePointer()->getNodeByProdCode(chosenProd);
 
                             if (selectedProd->getProductAisleBrandTreePointer() != nullptr) {
@@ -317,10 +317,10 @@ void modules::modifyModule(BinarySearchTree &aisles, AATree &inventory) {
 
                         string chosenProdString;
                         int chosenProd;
-                        cin >> chosenAisleString;
-                        chosenProd = stoi(chosenAisleString);
+                        cin >> chosenProdString;
+                        chosenProd = stoi(chosenProdString);
 
-                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenAisle)) {
+                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenProd)) {
                             auto *selectedProd = selectedAisle->getProductAisleTreePointer()->getNodeByProdCode(chosenProd);
 
                             if (selectedProd->getProductAisleBrandTreePointer() != nullptr) {
@@ -419,10 +419,10 @@ void modules::checkModule(BinarySearchTree &aisles, AATree &inventory) {
 
                         string chosenProdString;
                         int chosenProd;
-                        cin >> chosenAisleString;
-                        chosenProd = stoi(chosenAisleString);
+                        cin >> chosenProdString;
+                        chosenProd = stoi(chosenProdString);
 
-                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenAisle)) {
+                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenProd)) {
                             auto *selectedProd = selectedAisle->getProductAisleTreePointer()->getNodeByProdCode(chosenProd);
 
                             if (selectedProd->getProductAisleBrandTreePointer() != nullptr) {
@@ -481,10 +481,10 @@ void modules::checkModule(BinarySearchTree &aisles, AATree &inventory) {
 
                         string chosenProdString;
                         int chosenProd;
-                        cin >> chosenAisleString;
-                        chosenProd = stoi(chosenAisleString);
+                        cin >> chosenProdString;
+                        chosenProd = stoi(chosenProdString);
 
-                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenAisle)) {
+                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenProd)) {
                             auto *selectedProd = selectedAisle->getProductAisleTreePointer()->getNodeByProdCode(chosenProd);
 
                             if (selectedProd->getProductAisleBrandTreePointer() != nullptr) {
@@ -542,10 +542,10 @@ void modules::checkModule(BinarySearchTree &aisles, AATree &inventory) {
 
                         string chosenProdString;
                         int chosenProd;
-                        cin >> chosenAisleString;
-                        chosenProd = stoi(chosenAisleString);
+                        cin >> chosenProdString;
+                        chosenProd = stoi(chosenProdString);
 
-                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenAisle)) {
+                        if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenProd)) {
                             auto *selectedProd = selectedAisle->getProductAisleTreePointer()->getNodeByProdCode(chosenProd);
 
                             if (selectedProd->getProductAisleBrandTreePointer() != nullptr) {
@@ -748,8 +748,6 @@ void modules::checkGondolas(AATree &inventory, salesList &sales, BinarySearchTre
         try {
             AANode *inventoryItem = inventory.getNodeByAisleProdBrandCode(aux->getAisleCode()+aux->getProdCode()+aux->getBrandCode());
             auto *prodToRestore = aisleList.getNodeByAisleCode(stoi(aux->getAisleCode()))->getProductAisleTreePointer()->getNodeByProdCode(stoi(aux->getProdCode()))->getProductAisleBrandTreePointer()->getNodeByBrandCode(stoi(aux->getBrandCode()));
-//            cout << "Pre restock amount:" << prodToRestore->getAmount() << endl;
-//            cout << "Pre restock inv amount:" << inventoryItem->getStockAmount() << endl;
             if(prodToRestore->getAmount() < 2){
                 invAmount = inventoryItem->getStockAmount();
                 if(invAmount >= reStock){
@@ -759,8 +757,6 @@ void modules::checkGondolas(AATree &inventory, salesList &sales, BinarySearchTre
                     cout << "There is not enough stock in inventory for re stock for: " << inventory.getNodeByAisleProdBrandCode(aux->getAisleCode()+aux->getProdCode()+aux->getBrandCode())->getName() << endl;
                 }
             }
-//            cout << "Post restock amount:" << prodToRestore->getAmount() << endl;
-//            cout << "Post restock inv amount:" << inventoryItem->getStockAmount() << endl;
         } catch (class elementNotFound& e) {
             cout << e.what() << endl;
         }
@@ -777,5 +773,72 @@ void modules::reloadInventory(AATree &inventory) {
 }
 
 void modules::reportingModuleMainMenu(BinarySearchTree &aisleList, salesList &sales, BTreeClients &clients, AATree &inventory) {
+    string op;
+    while(true){
+        cout << "Welcome to reporting menu. Please select an option" << endl;
+        cout << "1) Most visited aisle" << endl;
+        cout << "2) Least visited aisle" << endl;
+        cout << "3) Most sold product per aisle" << endl;
+        cout << "4) Most sold brand" << endl;
+        cout << "5) Most expensive bill" << endl;
+        cout << "6) Client who bought the most" << endl;
+        cout << "7) Client who bought the least" << endl;
+        cout << "8) Client who billed most times" << endl;
+        cout << "9) Client who billed the least" << endl;
+        cout << "10) Check Aisles" << endl;
+        cout << "11) Check Products in Aisle" << endl;
+        cout << "12) Check Product Brands" << endl;
+        cout << "13) Check clients" << endl;
+        cout << "14) Check Inventory" << endl;
+        cout << "15) Generate all" << endl;
+        cout << "16) Return" << endl;
+        cin >> op;
 
+        if(op=="1"){
+            aisleList.generateMostVisitedAisleReport("../reports/mostVisitedAisle.txt");
+        } else if (op=="2"){
+            aisleList.generateLeastVisitedAisleReport("../reports/leastVisitedAisle.txt");
+        } else if (op=="3"){
+            mostProductPerAisle("../reports/mostProductsPerAisle.txt", aisleList);
+        } else if (op=="4"){
+            sales.generateMostSoldBrands("../reports/mostSoldBrand.txt");
+        } else if (op=="5"){
+            clients.generateMostExpensiveBill("../reports/mostExpensiveBill.txt");
+        } else if (op=="6"){
+            clients.generateMostExpensiveBill("../reports/clientWhoBoughtTheMost.txt");
+        } else if (op=="7"){
+            clients.generateLeastExpensiveBill("../reports/clientWhoBoughtTheLeast.txt");
+        } else if (op=="8"){
+            clients.generateMostBilledClient("../reports/mostBilledClient.txt");
+        } else if (op=="9"){
+            clients.generateLeastBilledClient("../reports/leastBilledClient.txt");
+        } else if (op=="10"){
+            aisleList.generateAisles("../reports/aislesList.txt");
+        } else if (op=="11"){
+            generateProductsReport("../reports/productsList.txt", aisleList);
+        } else if (op=="12"){
+            generateBrandsReport("../reports/brandsList.txt", aisleList);
+        } else if (op=="13"){
+            clients.generateClients("../reports/clientsList.txt");
+        } else if (op=="14"){
+            inventory.generateInventory("../reports/inventoryList.txt");
+        } else if (op=="15"){
+            aisleList.generateMostVisitedAisleReport("../reports/mostVisitedAisle.txt");
+            aisleList.generateLeastVisitedAisleReport("../reports/leastVisitedAisle.txt");
+            mostProductPerAisle("../reports/mostProductsPerAisle.txt", aisleList);
+            sales.generateMostSoldBrands("../reports/mostSoldBrand.txt");
+            clients.generateMostExpensiveBill("../reports/mostExpensiveBill.txt");
+            clients.generateMostExpensiveBill("../reports/clientWhoBoughtTheMost.txt");
+            clients.generateLeastExpensiveBill("../reports/clientWhoBoughtTheLeast.txt");
+            clients.generateLeastBilledClient("../reports/leastBilledClient.txt");
+            clients.generateMostBilledClient("../reports/mostBilledClient.txt");
+            aisleList.generateAisles("../reports/aislesList.txt");
+            generateProductsReport("../reports/productsList.txt", aisleList);
+            generateBrandsReport("../reports/brandsList.txt", aisleList);
+            clients.generateClients("../reports/clientsList.txt");
+            inventory.generateInventory("../reports/inventoryList.txt");
+        } else if (op=="16"){
+            break;
+        }
+    }
 }

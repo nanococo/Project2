@@ -20,6 +20,8 @@ public:
     void rebal(AANode *);
     AANode *insert(AANode *,AANode *);
     void print(AANode *);
+    void generateInventory(string path);
+    void generateProductsListHelper(AANode *R, ofstream &outfile);
     int countAANode(AANode *);
     bool isDataPresent(string data);
     bool isBasicProduct(string data);
@@ -207,4 +209,23 @@ bool AATree::isBasicProduct(string data) {
 
 void AATree::clear() {
     root = nullptr;
+}
+
+void AATree::generateInventory(string path) {
+    ofstream outfile (path);
+    outfile << "List of Inventory. " << endl;
+
+    generateProductsListHelper(root, outfile);
+
+    outfile.flags();
+    outfile.close();
+    cout << "Report generated successfully..." << endl;
+}
+
+void AATree::generateProductsListHelper(AANode *R, ofstream &outfile) {
+    if (!R)
+        return;
+    generateProductsListHelper(R->getLeft(), outfile);
+    outfile << "Aisle code: " << R->getKey() << ", Prod Code: " << R->getProdCode() << ", Brand Code: " << R->getBrandCode() << ", Name: " << R->getName() << ", Stock Amount: " << R->getStockAmount() << ", Is Basic product: " << R->getIsBasicProd() << endl;
+    generateProductsListHelper(R->getRight(), outfile);
 }
