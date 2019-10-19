@@ -1,0 +1,3 @@
+C:/GitHub_Projects/Project2/Client/cmake-build-debug/CMakeFiles/Client.dir
+C:/GitHub_Projects/Project2/Client/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/GitHub_Projects/Project2/Client/cmake-build-debug/CMakeFiles/rebuild_cache.dir
