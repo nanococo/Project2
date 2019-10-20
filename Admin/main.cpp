@@ -4,7 +4,9 @@
 
 
 void clientHandler(SOCKET client, modules &mod, AATree &inventory, clientQueue &clientsQ, BinarySearchTree &aisles, BTreeClients &clients, BTreeAdmins &admins, salesList &sales){
-
+    char sendBuff[512]="hola";
+    int s = sizeof(sendBuff);
+    send(client, sendBuff, s, 0);
     while(true) {
         char recvBuffer[4096];
         int sizeOfRecv = sizeof(recvBuffer);
@@ -38,8 +40,15 @@ void clientHandler(SOCKET client, modules &mod, AATree &inventory, clientQueue &
         }
     }
 }
-
-void clientJoiner(SOCKET client, struct sockaddr_in TCPClientAdd, int &iTCPClientAdd){
+void test(){
+    cout<<"yes"<<endl;
+}
+void clientJoiner(SOCKET client, sockaddr_in &TCPClientAdd, int &iTCPClientAdd, modules &mod, AATree &inventory, clientQueue &clientsQ, BinarySearchTree &aisles, BTreeClients &clients, BTreeAdmins &admins, salesList &sales){
+    int iListen = listen(client, 5);
+    if(iListen == SOCKET_ERROR){
+        cout<<"Failed listen"<<endl;
+    }
+    cout<<"Successful listen"<<endl;
 
      while(true){
         //Accept request
@@ -49,13 +58,13 @@ void clientJoiner(SOCKET client, struct sockaddr_in TCPClientAdd, int &iTCPClien
             cout<<"Conection failed"<<endl;
         }
         else{
-            //En buena teoria el mae crea un hilo por cliente
-            thread newClient(clientHandler, sAcceptSocket);
-            newClient.join();
+
+            thread newClient(clientHandler, sAcceptSocket, ref(mod), ref(inventory), ref(clientsQ), ref(aisles), ref(clients), ref(admins), ref(sales));
+            newClient.detach();
         }
-
     }
-
+    thread newThread(test);
+    newThread.join();
 }
 
 int main() {
@@ -126,17 +135,13 @@ int main() {
     cout<<"Successful bind"<<endl;
 
     //Listen
-    iListen = listen(TCPServerSocket, 5);
-    if(iListen == SOCKET_ERROR){
-        cout<<"Failed listen"<<endl;
-    }
-    cout<<"Successful listen"<<endl;
+
     //--------------------------------------
 
     
 //TODO aqui lo intenté xd
-   thread joiner (clientJoiner, TCPServerSocket, TCPClientAdd, iTCPClientAdd);
-   joiner.join();
+   thread joiner (clientJoiner, TCPServerSocket, ref(TCPClientAdd), ref(iTCPClientAdd), ref(mod), ref(inventory), ref(clientsQ), ref(aisles), ref(clients), ref(admins), ref(sales));
+   joiner.detach();
 
 
 
