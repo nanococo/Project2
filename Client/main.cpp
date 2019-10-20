@@ -58,14 +58,17 @@ int main(){
     while(true){
         string op;
         cout<<"Welcome to the supermarket"<<endl;
-        cout<<"1. Buy"<<endl;
-        cout<<"s. exit"<<endl;
+        cout << "1) Login" <<endl;
+        cout << "2) Unregistered client" << endl;
+        cout << "3) Exit"<<endl;
         cin>>op;
 
         if(op == "1"){
             string id;
             cout<<"Please enter your id"<<endl;
             cin >> id;
+
+
 
             //validacion con el arbol b
             if(true){

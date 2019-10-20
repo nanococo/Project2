@@ -17,6 +17,13 @@ public:
     void billingModule(BinarySearchTree &aisles, clientQueue &clientsQ, BTreeClients &clients, AATree &inventory, salesList &sales);
     void modifyModule(BinarySearchTree &aisles, AATree &inventory);
 
+    /**Following methods are for client usage**/
+//    static void checkPrice(BinarySearchTree)
+    bool validateClient(BTreeClients clients, const string& id);
+    bool executePurchase(BTreeClients &clients, clientQueue &clientsQ, BinarySearchTree &aisleList, const string& aisleCode, const string& prodCode, const string& brandCode, string amountToBuy);
+    string getAisleByAisleCode(BinarySearchTree &aisles);
+
+
 private:
     float basicProd = 0.01;
     float nonBasicProd = 0.13;
@@ -590,6 +597,8 @@ void modules::checkModule(BinarySearchTree &aisles, AATree &inventory) {
 
 void modules::billingModule(BinarySearchTree &aisles, clientQueue &clientsQ, BTreeClients &clients, AATree &inventory, salesList &sales) {
 
+
+
     bool billingMenuExit = false;
     string aisleCode;
     string prodCode;
@@ -841,4 +850,267 @@ void modules::reportingModuleMainMenu(BinarySearchTree &aisleList, salesList &sa
             break;
         }
     }
+}
+
+/**
+ * Checks if client exists the returns true or false
+ * */
+bool modules::validateClient(BTreeClients clients, const string& id) {
+    try {
+        int numId = stoi(id);
+        return clients.search(numId)!=nullptr;
+
+    } catch (std::invalid_argument &e){
+        return false;
+    }
+
+}
+
+bool modules::executePurchase(BTreeClients &clients, clientQueue &clientsQ, BinarySearchTree &aisleList,
+        const string& aisleCode, const string& prodCode, const string& brandCode, string amountToBuy) {
+
+
+
+    try {
+        int chosenAisle;
+        chosenAisle = stoi(aisleCode);
+
+        if (aisleList.isAisleCodeInTree(chosenAisle)) {
+            auto *selectedAisle = aisleList.getNodeByAisleCode(chosenAisle);
+
+            if (selectedAisle->getProductAisleTreePointer() != nullptr) {
+                selectedAisle->getProductAisleTreePointer()->printProductsForPurchase(selectedAisle->getProductAisleTreePointer()->getAVLRoot());
+
+                int chosenProd;
+                chosenProd = stoi(prodCode);
+
+                if (selectedAisle->getProductAisleTreePointer()->isProdCodeOnTree(chosenProd)) {
+                    auto *selectedProd = selectedAisle->getProductAisleTreePointer()->getNodeByProdCode(chosenProd);
+
+                    if (selectedProd->getProductAisleBrandTreePointer() != nullptr) {
+                        selectedProd->getProductAisleBrandTreePointer()->printBrandsForPurchase();
+
+                        string brandCodeString;
+                        int chosenBrand;
+
+                        cin >> brandCodeString;
+                        chosenBrand = stoi(brandCodeString);
+
+                        if (selectedProd->getProductAisleBrandTreePointer()->isBrandCodeOnList(chosenBrand)) {
+                            auto *selectedBrand = selectedProd->getProductAisleBrandTreePointer()->getNodeByBrandCode(chosenBrand);
+
+                            /**HERE EXECUTE PURCHASE*/
+
+                        } else {
+                            cout << "ERROR: No such brand on system. Please Try Again." << endl;
+                            return false;
+                        }
+                    } else {
+                        cout << "ERROR: There are no Brands associated to given Aisle" << endl;
+                        return false;
+                    }
+                } else {
+                    cout << "ERROR: No such product on system. Please Try Again." << endl;
+                    return false;
+                }
+            } else {
+                cout << "ERROR: There are no Products associated to given Aisle" << endl;
+                return false;
+            }
+        } else {
+            cout << "ERROR: No such aisle on system. Please Try Again." << endl;
+            return false;
+        }
+    } catch (std::invalid_argument& e){
+        cout << "Value is not numeric. Please try again" << endl;
+        return false;
+    }
+
+
+
+
+    /**GAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH*/
+
+
+//    while (true) {
+//        string op;
+//        cout << "Welcome to buy module. Please select an option" << endl;
+//        cout << "1) Buy" << endl;
+//        cout << "2) Exit" << endl;
+//
+//        cin >> op;
+//
+//        if(op=="1"){
+//            string inputId;
+//            cout << "Please type your ID: ";
+//            cin >> inputId;
+//            cout << endl;
+//
+//            if(clients.isClientIdInList(inputId)){
+//                clientNode *client = clients.getClientByClientId(inputId);
+//
+//                if(!clientsQ.isClientIdInList(client->getClientId())){
+//
+//                    //Purchase loop condition
+//                    bool purchaseExit = false;
+//
+//                    cout << "Hello " << client->getName() << endl;
+//                    while (!purchaseExit){
+//                        string purchaseExitOp;
+//
+//                        cout << "Please select an aisle: " << endl;
+//
+//                        //Prints aisles
+//                        aisleList.printAisleForPurchase();
+//
+//                        string chosenAisle;
+//                        cin >> chosenAisle;
+//
+//                        try{
+//                            int aisleIndex = stoi(chosenAisle)-1; //Always subtract 1 due to index management
+//                            aisleNode *selectedAisle = aisleList.getNodeByPos(aisleIndex);
+//
+//                            //Increments visits counter
+//                            selectedAisle->addVisit();
+//
+//                            if(selectedAisle->getProductAisleListPointer() != nullptr){
+//                                cout << "Please select a product from aisle: " << selectedAisle->getName() << endl;
+//
+//                                //Prints products for aisle
+//                                selectedAisle->getProductAisleListPointer()->printProductsForPurchase();
+//
+//                                string chosenProduct;
+//                                cin >> chosenProduct;
+//
+//                                int prodIndex = stoi(chosenProduct)-1;
+//                                aisleProductNode *selectedProduct = selectedAisle->getProductAisleListPointer()->getNodeByPos(prodIndex);
+//
+//                                if(selectedProduct->getAisleProductBrandListPointer() != nullptr){
+//
+//                                    cout << "Please select a product brand for: " << selectedProduct->getName() << endl;
+//
+//                                    //Prints the brands list for product
+//                                    selectedProduct->getAisleProductBrandListPointer()->printBrandsForPurchase();
+//
+//                                    string chosenBrand;
+//                                    string amountToBuy;
+//                                    cin >> chosenBrand;
+//
+//                                    cout << "Please, type an amount of product to buy: " << endl;
+//                                    cin >> amountToBuy;
+//
+//
+//
+//                                    int intAmountToBuy = stoi(amountToBuy);
+//
+//                                    if (intAmountToBuy>=0){
+//                                        int brandIndex = stoi(chosenBrand)-1;
+//                                        aisleProductBrandNode *selectedBrand = selectedProduct->getAisleProductBrandListPointer()->getNodeByPos(brandIndex);
+//
+//                                        if(intAmountToBuy <= selectedProduct->getAisleProductBrandListPointer()->getNodeByPos(brandIndex)->getAmount()){
+//
+//                                            //Reduces from gondola
+//                                            selectedBrand->setAmount(selectedBrand->getAmount()-intAmountToBuy);
+//
+//                                            //Adds client to queue clients
+//                                            if(!clientsQ.isClientIdInList(inputId)){
+//                                                clientsQ.appendAtStart(client->getClientId());
+//                                                clientsQ.printList();
+//                                            }
+//
+//                                            if(clientsQ.getClientById(inputId)->getFirstClientProd()== nullptr){
+//                                                clientsQ.getClientById(inputId)->setFirstClientProd(new clientProductStackNode(selectedAisle->getAisleCode(), selectedProduct->getProdCode(), selectedBrand->getBrandCode(), intAmountToBuy));
+//                                            } else {
+//                                                clientProductStackNode *aux = clientsQ.getClientById(inputId)->getFirstClientProd();
+//                                                while (aux->getNextNode() != nullptr){
+//                                                    aux = aux->getNextNode();
+//                                                }
+//                                                aux->setNextNode(new clientProductStackNode(selectedAisle->getAisleCode(), selectedProduct->getProdCode(), selectedBrand->getBrandCode(), intAmountToBuy));
+//                                            }
+//
+//                                            //Adds amounts to reporting usage
+//                                            selectedProduct->setTimesSold(selectedProduct->getTimesSold()+intAmountToBuy);
+//                                            while(!checkEndOption(purchaseExitOp)){
+//                                                cout << "Product added to cart. Would you like to keep buying? (Y/N)" << endl;
+//                                                cin >> purchaseExitOp;
+//                                            }
+//                                            if(purchaseExitOp=="N"||purchaseExitOp=="n"){
+//                                                purchaseExit = true;
+//                                            }
+//
+//
+//
+//                                        } else {
+//                                            cout << "Not enough amount to buy." << endl;
+//                                            while(!checkEndOption(purchaseExitOp)){
+//                                                cout << "Would you like to try again? (Y/N)" << endl;
+//                                                cin >> purchaseExitOp;
+//                                            }
+//                                            if(purchaseExitOp=="N"||purchaseExitOp=="n"){
+//                                                purchaseExit = true;
+//                                            }
+//                                        }
+//
+//                                    } else {
+//                                        cout << "Please select a positive number." << endl;
+//                                        while(!checkEndOption(purchaseExitOp)){
+//                                            cout << "Would you like to try again? (Y/N)" << endl;
+//                                            cin >> purchaseExitOp;
+//                                        }
+//                                        if(purchaseExitOp=="N"||purchaseExitOp=="n"){
+//                                            purchaseExit = true;
+//                                        }
+//                                    }
+//
+//                                } else {
+//                                    cout << "Product selected has no brands." << endl;
+//                                    while(!checkEndOption(purchaseExitOp)){
+//                                        cout << "Would you like to try again? (Y/N)" << endl;
+//                                        cin >> purchaseExitOp;
+//                                    }
+//                                    if(purchaseExitOp=="N"||purchaseExitOp=="n"){
+//                                        purchaseExit = true;
+//                                    }
+//                                }
+//
+//
+//                            } else {
+//                                cout << "Aisle selected is empty." << endl;
+//                                while(!checkEndOption(purchaseExitOp)){
+//                                    cout << "Would you like to try again? (Y/N)" << endl;
+//                                    cin >> purchaseExitOp;
+//                                }
+//                                if(purchaseExitOp=="N"||purchaseExitOp=="n"){
+//                                    purchaseExit = true;
+//                                }
+//                            }
+//
+//
+//                        } catch (std::invalid_argument& e){
+//                            cout << "Invalid Option. Please try again" << endl;
+//                        } catch (class indexOutOfBounds& f){
+//                            cout << "Invalid Option. Please try again" << endl;
+//                        } catch (class elementNotFound& g){
+//                            cout << g.what() << endl;
+//                        }
+//                    }
+//
+//                } else{
+//                    cout << "This client is already in line. Please pay before buying again" << endl;
+//                }
+//
+//            } else {
+//                cout << "No client found on list. Please try again." << endl;
+//            }
+//        } else if (op=="2"){
+//            break;
+//        } else {
+//            cout << "Not an option. Try again" << endl;
+//        }
+//    }
+
+
+
+
+    return false;
 }
