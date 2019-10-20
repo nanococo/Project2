@@ -39,12 +39,12 @@ void clientHandler(SOCKET client, modules &mod, AATree &inventory, clientQueue &
     }
 }
 
-void clientJoiner(){
+void clientJoiner(SOCKET client, struct sockaddr_in TCPClientAdd, int &iTCPClientAdd){
 
      while(true){
         //Accept request
-
-        sAcceptSocket = accept(TCPServerSocket, (SOCKADDR*)&TCPClientAdd, &iTCPClientAdd);
+        SOCKET sAcceptSocket;
+        sAcceptSocket = accept(client, (SOCKADDR*)&TCPClientAdd, &iTCPClientAdd);
         if(sAcceptSocket == INVALID_SOCKET){
             cout<<"Conection failed"<<endl;
         }
@@ -135,7 +135,8 @@ int main() {
 
     
 //TODO aqui lo intenté xd
-//    thread joiner (clientJoiner, )
+   thread joiner (clientJoiner, TCPServerSocket, TCPClientAdd, iTCPClientAdd);
+   joiner.join();
 
 
 
