@@ -33,6 +33,7 @@ public:
     int getAmount() const;
     int getPrice() const;
     int getTimesSold() const;
+    string getBrandsForClient(RBNode *R, string &concat);
 
     using BaseBinaryNode::getLeftPointer;
     using BaseBinaryNode::getRightPointer;
@@ -137,4 +138,15 @@ void RBNode::generateBrand(RBNode *R, ofstream &outfile) {
     generateBrand((RBNode*) R->getLeftPointer(), outfile);
     outfile << "Brand Code: " << R->getData() << ", Brand Name: " << R->getName() << endl;
     generateBrand((RBNode*) R->getRightPointer(), outfile);
+}
+
+string RBNode::getBrandsForClient(RBNode *R, string &concat) {
+    if (R == nullptr){
+        return concat;
+    } else {
+        concat = getBrandsForClient((RBNode*) R->getLeftPointer(), concat);
+        concat += "Brand Code: " + to_string(R->getData()) + ", Brand Name: " + R->getName() + ", Amount: " + to_string(R->getAmount()) + "\n";
+        concat = getBrandsForClient((RBNode*) R->getRightPointer(), concat);
+    }
+    return concat;
 }

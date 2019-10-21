@@ -91,6 +91,9 @@ int main(){
 
                             if(check == "1"){
                                 //check price of a product
+                                char caca[4096]="hola";
+                                send(TCPClientSocket, caca, sizeof(caca), 0);
+                                recv(TCPClientSocket, RecvBuffer, sizeof(RecvBuffer), 0);
                             }
                             else if(check == "2"){
                                 //check if a product is basic

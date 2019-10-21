@@ -18,6 +18,7 @@ public:
     void generateAisles(string path);
     void generateMostVisitedAisleReport(string path);
     void generateLeastVisitedAisleReport(string path);
+    string getAislesForClient();
 
 
     int highestVisitedValue;
@@ -94,4 +95,9 @@ void BinarySearchTree::generateAisles(string path) {
     outfile.flags();
     outfile.close();
     cout << "Report generated successfully..." << endl;
+}
+
+string BinarySearchTree::getAislesForClient() {
+    string concat;
+    return BSNode::getAislesForClient(root, concat);
 }

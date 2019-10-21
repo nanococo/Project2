@@ -20,6 +20,7 @@ public:
     bool isEmpty();
     bool isElementInList(const string &aisleCode, const string &prodCode, const string &brandCode);
     void updateElementInList(const string& aisleCode, const string& prodCode, const string& brandCode, int amountSoldToAdd);
+    salesNode *getElementInList(const string &aisleCode, const string &prodCode, const string &brandCode);
 
 private:
     salesNode *firstNode;
@@ -130,5 +131,17 @@ void salesList::generateMostSoldBrands(const string &path) {
     outfile.flush();
     outfile.close();
     cout << "Report generated successfully..." << endl;
+}
+
+salesNode *salesList::getElementInList(const string &aisleCode, const string &prodCode, const string &brandCode) {
+    aux = firstNode;
+    bool found = false;
+    while (aux!= nullptr){
+        if(aux->getAisleCode()==aisleCode && aux->getProdCode() == prodCode && aux->getBrandCode() == brandCode){
+            return aux;
+        }
+        next();
+    }
+    return nullptr;
 }
 

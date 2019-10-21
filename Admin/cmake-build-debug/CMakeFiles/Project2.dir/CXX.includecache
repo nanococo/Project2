@@ -60,6 +60,18 @@ C:/GitHub_Projects/Project2/Admin/src/nodeTypes/RBNode.h
 bits/stdc++.h
 -
 
+C:/GitHub_Projects/Project2/Admin/src/helpers/citiesList.h
+iostream
+-
+citiesNode.h
+C:/GitHub_Projects/Project2/Admin/src/helpers/citiesNode.h
+
+C:/GitHub_Projects/Project2/Admin/src/helpers/citiesNode.h
+string
+-
+utility
+-
+
 C:/GitHub_Projects/Project2/Admin/src/helpers/clientProductStackNode.h
 string
 -
@@ -93,6 +105,8 @@ C:/GitHub_Projects/Project2/Admin/src/TreesHandlers/BTreeClients.h
 C:/GitHub_Projects/Project2/Admin/src/TreesHandlers/BTreeAdmins.h
 ../TreesHandlers/AATree.h
 C:/GitHub_Projects/Project2/Admin/src/TreesHandlers/AATree.h
+citiesList.h
+C:/GitHub_Projects/Project2/Admin/src/helpers/citiesList.h
 
 C:/GitHub_Projects/Project2/Admin/src/helpers/quickSortHelper.h
 iostream

@@ -22,6 +22,7 @@ public:
     void generateBrand(string path, int aisleCode, int prodCode);
     RBNode *getNodeByBrandCode(int brandCode);
     bool isBrandCodeOnList(int brandCode);
+    string getBrandsForClient();
 };
 
 // A recursive function to do level order traversal
@@ -263,6 +264,11 @@ void RBTree::generateBrand(string path, int aisleCode, int prodCode) {
     outfile.flags();
     outfile.close();
     cout << "Report generated successfully..." << endl;
+}
+
+string RBTree::getBrandsForClient() {
+    string concat;
+    return root->getBrandsForClient(root, concat);
 }
 
 

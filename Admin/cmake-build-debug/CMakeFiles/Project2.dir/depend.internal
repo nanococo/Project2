@@ -9,6 +9,8 @@ CMakeFiles/Project2.dir/main.cpp.obj
  C:/GitHub_Projects/Project2/Admin/src/TreesHandlers/BTreeClients.h
  C:/GitHub_Projects/Project2/Admin/src/TreesHandlers/BinarySearchTree.h
  C:/GitHub_Projects/Project2/Admin/src/TreesHandlers/RBTree.h
+ C:/GitHub_Projects/Project2/Admin/src/helpers/citiesList.h
+ C:/GitHub_Projects/Project2/Admin/src/helpers/citiesNode.h
  C:/GitHub_Projects/Project2/Admin/src/helpers/clientProductStackNode.h
  C:/GitHub_Projects/Project2/Admin/src/helpers/clientQueue.h
  C:/GitHub_Projects/Project2/Admin/src/helpers/clientQueueNode.h

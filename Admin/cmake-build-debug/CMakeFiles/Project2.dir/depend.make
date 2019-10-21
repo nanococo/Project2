@@ -8,6 +8,8 @@ CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BTreeAdmins.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BTreeClients.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/BinarySearchTree.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/TreesHandlers/RBTree.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/citiesList.h
+CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/citiesNode.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/clientProductStackNode.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/clientQueue.h
 CMakeFiles/Project2.dir/main.cpp.obj: ../src/helpers/clientQueueNode.h

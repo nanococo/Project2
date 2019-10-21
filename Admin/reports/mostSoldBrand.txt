@@ -1,1 +1,2 @@
 Most sold brands report. 
+Aisle Code: 1 Prod Code: 20 Brand Code: 51Amount sold: 1

@@ -30,6 +30,7 @@ public:
     void postorder(AVLNode *);
     void setAVLRoot(AVLNode *newRoot);
     bool isProdCodeOnTree(int prodCode);
+    string getProductsForClient();
 
     int highestBoughValue;
     int lowestBoughtValue;
@@ -37,6 +38,7 @@ public:
 private:
     AVLNode *root;
 
+    string getProductsForClientHelper(AVLNode *t, string &concat);
 };
 
 AVLNode *AVLBinaryTree::getAVLRoot() const {
@@ -206,4 +208,20 @@ void AVLBinaryTree::generateProd(const string &path, int aisleCode) {
     outfile.flags();
     outfile.close();
     cout << "Report generated successfully..." << endl;
+}
+
+string AVLBinaryTree::getProductsForClient() {
+    string concat;
+    return getProductsForClientHelper(root, concat);
+}
+
+string AVLBinaryTree::getProductsForClientHelper(AVLNode *t, string &concat) {
+    if (t == nullptr){
+        return concat;
+    } else {
+        concat = getProductsForClientHelper((AVLNode*) t->getLeftPointer(), concat);
+        concat += "Product Code:" + to_string(t->getData()) + ", Product Name:" + t->getName() + "\n";
+        concat = getProductsForClientHelper((AVLNode*) t->getRightPointer(), concat);
+    }
+    return concat;
 }

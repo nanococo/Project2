@@ -5,6 +5,9 @@
 #include "../TreesHandlers/BTreeClients.h"
 #include "../TreesHandlers/BTreeAdmins.h"
 #include "../TreesHandlers/AATree.h"
+#include "citiesList.h"
+
+
 
 
 using namespace std;
@@ -468,6 +471,44 @@ void splitIntoInventory(AATree &inventory, const string& fullString, char delimi
     }
 }
 
+void splitIntoCitiesList(citiesList &cities, const string& fullString, char delimiter) {
+    string data1;
+    string data2;
+    string data3;
+    string data4;
+    string data5;
+    string data6;
+    int dataCount = 0;
+    for (auto x : fullString){
+        switch(dataCount){
+            case 0:
+                if(x==delimiter){
+                    //cout << data1 << endl;
+                    dataCount++;
+                } else {
+                    data1+=x;
+                }
+                break;
+            case 1:
+                if(x==delimiter){
+                    //cout << data2 << endl;
+                    dataCount++;
+                } else {
+                    data2+=x;
+                }
+                break;
+            default:
+                dataCount=0;
+                data1 = "";
+                data2 = "";
+        }
+    }
+    if (!cities.isElementInList(data1)){
+        cities.appendAtEnd(new citiesNode(data1, data2));
+    }
+
+
+}
 
 /**
  * Initializes a list with values from file
@@ -483,6 +524,24 @@ void initAisleTree(BinarySearchTree &aisles){
         }
     }
 }
+
+
+/**
+ * Initializes a list with values from file
+ * @param aisles By reference. Is the list to be initiliazed
+ * **/
+void initCitiesList(citiesList &cities){
+    string line;
+    ifstream arch1("data/Ciudades.txt");
+
+    while (getline(arch1, line)) {
+        if(!line.empty()){
+            splitIntoCitiesList(cities, line, ';');
+        }
+    }
+}
+
+
 
 /**
  * Initializes a list with values from file
@@ -559,6 +618,10 @@ void initInventory(AATree &inventory){
             splitIntoInventory(inventory, line, ';');
         }
     }
+}
+
+static bool checkEndOption(const string& endOp){
+    return endOp == "Y" || endOp =="y" || endOp=="n" || endOp=="N";
 }
 
 static void mostProductPerAisle(const string& path, BinarySearchTree &aisleList) {

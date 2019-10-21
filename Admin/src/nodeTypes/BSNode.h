@@ -31,6 +31,7 @@ public:
     using BaseBinaryNode::getData;
     BSNode *getNodeByAisleCode(BSNode *R, int i);
     AVLBinaryTree *getProductAisleTreePointer() const;
+    static string getAislesForClient(BSNode *R, string &concat);
 
 
 
@@ -215,4 +216,15 @@ void BSNode::generateAisles(BSNode *R, ofstream &outfile) {
         outfile << "Aisle Code: " << R->getData() << " Aisle Name: " << R->getName() << " Visits: " << R->getVisits() << endl;
         generateAisles((BSNode*) R->getRightPointer(), outfile);
     }
+}
+
+string BSNode::getAislesForClient(BSNode *R, string &concat) {
+    if(R == nullptr){
+        return concat;
+    }else{
+        concat = getAislesForClient((BSNode*) R->getLeftPointer(), concat);
+        concat += "Aisle Code: "+ to_string(R->getData()) +" Name:" + R->getName() + "\n";
+        concat = getAislesForClient((BSNode*) R->getRightPointer(), concat);
+    }
+    return concat;
 }
